@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="SharpGis.SharpGps.GPSHandler" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>GPSHandler.cs</FileName>
+      <HashCode>gApAAEgAACAADAIECAAACAI0AABBAAEFIAAACYoYoAE=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Internal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="SharpGis.SharpGps.GPSHandler.NewGPSFixHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GPSHandler.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="SharpGis.SharpGps.GPSHandler.GPSEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GPSHandler.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="SharpGis.SharpGps.GPSHandler.NMEAEmulator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GPSHandler.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SharpGis.SharpGps.RTCM">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>RTCM\RTCM.cs</FileName>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAABAAAAEkAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SharpGis.SharpGps.RTCM.MessageType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RTCM\RTCM.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="SharpGis.SharpGps.SerialPort" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>SerialPort.cs</FileName>
+      <HashCode>QAIAAAAAAGAEICIAAEAAQUAoCABAAAAAIAAAAAEEAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Internal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="SharpGis.SharpGps.SerialPort.NewGPSDataHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SerialPort.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="SharpGis.SharpGps.SerialPort.GPSEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SerialPort.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpGis.SharpGps.NMEA.GPGGA">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NMEA\GPGGA.cs</FileName>
+      <HashCode>AAAAAAABACAAACA0CAKAgAQiAAAAhAAAAAICgAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SharpGis.SharpGps.NMEA.GPGGA.FixQualityEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NMEA\GPGGA.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="SharpGis.SharpGps.NMEA.GPGLL">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NMEA\GPGLL.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAggAAAAAAAIAAAgAAAAAAAAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SharpGis.SharpGps.NMEA.GPGSA">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NMEA\GPGSA.cs</FileName>
+      <HashCode>AAAAAAAAAJEAQCBAAgBAAEgAAAAAAAAAQABAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SharpGis.SharpGps.NMEA.GPGSA.GSAFixModeEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NMEA\GPGSA.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="SharpGis.SharpGps.NMEA.GPGSV">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NMEA\GPGSV.cs</FileName>
+      <HashCode>AAAAAAAAAAEAABAAAAAAAAAAEAAAAAAAAAgAgAAACAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="SharpGis.SharpGps.NMEA.GPGSV.Satellite" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NMEA\GPGSV.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+  </Class>
+  <Class Name="SharpGis.SharpGps.NMEA.GPRMC">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NMEA\GPRMC.cs</FileName>
+      <HashCode>AEAAAAAEAAAAQAAwCIAEAAABAAAAAAAABAAAgAAAAIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SharpGis.SharpGps.NMEA.GPRMC.StatusEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NMEA\GPRMC.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="SharpGis.SharpGps.NMEA.GPRME">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NMEA\PGRME.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAABAAEQAAAAAAAAAAAAgAAIACAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Enum Name="SharpGis.SharpGps.GPSEventType">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Enumerations.cs</FileName>
+      <HashCode>QAAAAAgAAAAAAAIAAAAACAAAQAABAAAAAAAAAAAIoBA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>
