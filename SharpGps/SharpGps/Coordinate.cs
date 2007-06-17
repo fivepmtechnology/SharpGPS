@@ -1,4 +1,4 @@
-// Copyright 2005 - Morten Nielsen (www.iter.dk)
+// Copyright 2007 - Morten Nielsen
 //
 // This file is part of SharpGps.
 // SharpGps is free software; you can redistribute it and/or modify
@@ -120,6 +120,10 @@ namespace SharpGis.SharpGps
 			lonSec = (b * 60.0 - lonMin) * 60.0;
 		}
 
+		/// <summary>
+		/// Returns a string representation of this object.
+		/// </summary>
+		/// <returns></returns>
 		public override string ToString()
 		{
 			return this.ToString(null);

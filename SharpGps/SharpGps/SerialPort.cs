@@ -1,4 +1,4 @@
-// Copyright 2005 - Morten Nielsen (www.iter.dk)
+// Copyright 2007 - Morten Nielsen
 //
 // This file is part of SharpGps.
 // SharpGps is free software; you can redistribute it and/or modify
@@ -120,7 +120,7 @@ namespace SharpGis.SharpGps
 			catch (System.IO.IOException ex)
 			{
 				//Some devices (like iPAQ H4100 among others) throws an IOException for no reason
-				//Lets just ignore it and run along
+				//Let's just ignore it and run along
 				//Thanks to Shaun O'Callaghan for pointing this out
 			}
 			catch (System.Exception ex)

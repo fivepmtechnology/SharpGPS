@@ -1,3 +1,20 @@
+// Copyright 2007 - Morten Nielsen
+//
+// This file is part of SharpGps.
+// SharpGps is free software; you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+// 
+// SharpGps is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+
+// You should have received a copy of the GNU Lesser General Public License
+// along with SharpGps; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -5,14 +22,15 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Test_cs")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Demo_PocktPC")]
+[assembly: AssemblyDescription("GPS Library for .NET 2.0 and .NET CF")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("iter.dk")]
-[assembly: AssemblyProduct("Test_cs")]
-[assembly: AssemblyCopyright("Copyright © iter.dk 2005")]
+[assembly: AssemblyCompany("Morten Nielsen")]
+[assembly: AssemblyProduct("SharpGps")]
+[assembly: AssemblyCopyright("Copyright © Morten Nielsen 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM componenets.  If you need to access a type in this assembly from 

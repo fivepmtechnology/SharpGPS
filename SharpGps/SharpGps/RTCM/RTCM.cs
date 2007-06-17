@@ -1,4 +1,4 @@
-// Copyright 2005 - Morten Nielsen (www.iter.dk)
+// Copyright 2007 - Morten Nielsen
 //
 // This file is part of SharpGps.
 // SharpGps is free software; you can redistribute it and/or modify

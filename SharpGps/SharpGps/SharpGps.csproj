@@ -119,8 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coordinate.cs" />
-    <None Include="Coordinates\Coordinate.cs" />
-    <Compile Include="Coordinates\ICoordinate.cs" />
     <Compile Include="NMEA\GPGSV.cs" />
     <Compile Include="NMEA\GPGSA.cs" />
     <Compile Include="NMEA\GPGLL.cs" />
