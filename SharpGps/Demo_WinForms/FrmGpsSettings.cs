@@ -27,10 +27,29 @@ namespace Demo_WinForms
 {
 	public partial class FrmGpsSettings : Form
 	{
+		string[] ports;
 		public FrmGpsSettings()
 		{
 			InitializeComponent();
-			cmbPorts.DataSource = System.IO.Ports.SerialPort.GetPortNames();
+			ports = System.IO.Ports.SerialPort.GetPortNames();
+			cmbPorts.DataSource = ports;
+			LoadFromRegistry();
+		}
+		private void LoadFromRegistry()
+		{
+			//TODO: Obtain these values from the registry
+			string port = "COM4";
+			string BaudRate = "4800";
+
+			for (int i = 0; i < ports.Length; i++)
+			{
+				if(port==ports[i]) cmbPorts.SelectedIndex = i;
+			}
+			int baudrate=4800;
+			if (int.TryParse(BaudRate, out baudrate))
+				tbBaudRate.Text = baudrate.ToString();
+			else
+				tbBaudRate.Text = "4800";
 		}
 		public string SerialPort
 		{
@@ -39,7 +58,30 @@ namespace Demo_WinForms
 		public int BaudRate
 		{
 			get { return int.Parse(tbBaudRate.Text); }
-			set { tbBaudRate.Text = value.ToString(); }
 		}
+
+		public void DisableConfig()
+		{
+			EnableDisable(false);
+		}
+		public void EnableConfig()
+		{
+			EnableDisable(true);
+		}
+		private void EnableDisable(bool enable)
+		{
+			cmbPorts.Enabled = enable;
+			tbBaudRate.Enabled = enable;
+		}
+		
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			//TODO: Save settings in registry
+
+			//Prevent disposal of dialog
+			e.Cancel = true;
+			base.OnClosing(e);
+			this.Hide();
+		}		
 	}
 }

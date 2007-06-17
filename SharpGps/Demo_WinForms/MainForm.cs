@@ -29,15 +29,15 @@ namespace Demo_WinForms
 	public partial class MainForm : Form
 	{
 		//TODO: Change this to be set from settings
-		public const string ActiveSerialPort = "COM3";
-		public const int SerialPortSpeed = 4800;
+		//public const string ActiveSerialPort = "COM3";
+		//public const int SerialPortSpeed = 4800;
 
 		public static FrmGpsSettings frmGpsSettings;
 
 		public MainForm()
 		{
 			InitializeComponent();
-
+			
 			GPS = new GPSHandler(this); //Initialize GPS handler
 			GPS.TimeOut = 5; //Set timeout to 5 seconds
 			GPS.NewGPSFix += new GPSHandler.NewGPSFixHandler(this.GPSEventHandler); //Hook up GPS data events to a handler
@@ -53,7 +53,7 @@ namespace Demo_WinForms
 			{
 				try
 				{
-					GPS.Start(ActiveSerialPort, SerialPortSpeed); //Open serial port
+					GPS.Start(frmGpsSettings.SerialPort, frmGpsSettings.BaudRate); //Open serial port
 					menuItemGPS_Start.Text = "Stop";
 				}
 				catch (System.Exception ex)
@@ -206,7 +206,7 @@ namespace Demo_WinForms
 			sFormat.Alignment = StringAlignment.Center;
 			//Draw satellites
 			//GPS.GPGSV.Satellites.Sort(); //new Comparison<SharpGis.SharpGps.NMEA.GPGSV.Satellite>(sat1, sat2) { int.Parse(sat1)
-			for (int i = 0; i < SatCount; i++)
+			for (int i = 0; i < GPS.GPGSV.Satellites.Count; i++)
 			{
 				SharpGis.SharpGps.NMEA.GPGSV.Satellite sat = GPS.GPGSV.Satellites[i];
 				int startx = i * (barWidth + iPadding)+iMargin;
@@ -241,7 +241,7 @@ namespace Demo_WinForms
 			sFormat.LineAlignment = StringAlignment.Near;
 			sFormat.Alignment = StringAlignment.Near;
 			float radius = 6f;
-			for (int i = 0; i < SatCount; i++)
+			for (int i = 0; i < GPS.GPGSV.Satellites.Count; i++)
 			{
 				SharpGis.SharpGps.NMEA.GPGSV.Satellite sat = GPS.GPGSV.Satellites[i];
 				double ang = 90.0-sat.Azimuth;
@@ -268,6 +268,9 @@ namespace Demo_WinForms
 
 		private void menuItemGPS_Settings_Click(object sender, EventArgs e)
 		{
+			if (GPS.IsPortOpen) frmGpsSettings.DisableConfig();
+			else frmGpsSettings.EnableConfig();
+
 			frmGpsSettings.Show();
 		}
 
@@ -275,25 +278,13 @@ namespace Demo_WinForms
 		{
 			if (NMEAtabs.TabPages[NMEAtabs.SelectedIndex].Text == "GPGSV")
 				DrawGSV();
-			else if (NMEAtabs.TabPages[NMEAtabs.SelectedIndex].Text == "Map")
-			{
-				DrawMap();
-			}
 		}
-
-		private void DrawMap()
-		{
-			//CreateSHP();
-			//CreateDBF();
-		}
-
+				
 		private void btnNTRIPGetSourceTable_Click(object sender, EventArgs e)
 		{
 			SharpGis.SharpGps.NTRIP.NTRIPClient ntrip = new SharpGis.SharpGps.NTRIP.NTRIPClient(new System.Net.IPEndPoint(System.Net.IPAddress.Parse(tbNTRIPServerIP.Text.Trim()), int.Parse(tbNTRIPPort.Text)));
 			// http://igs.ifag.de/root_ftp/misc/ntrip/streamlist_euref-ip.htm
 				
-			//ntrip.UserName = "user28";
-			//ntrip.Password = "hfjfkp";
 			SharpGis.SharpGps.NTRIP.SourceTable table = ntrip.GetSourceTable();
 			if (table != null)
 			{
@@ -308,8 +299,6 @@ namespace Demo_WinForms
 			}
 			else
 				MessageBox.Show("Failed to request or parse the DataSource Table");
-			//MessageBox.Show(table.DataStreams.Count.ToString());
-
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

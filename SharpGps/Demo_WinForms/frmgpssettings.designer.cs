@@ -86,13 +86,18 @@ namespace Demo_WinForms
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(240, 107);
+			this.ClientSize = new System.Drawing.Size(228, 87);
 			this.Controls.Add(this.tbBaudRate);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cmbPorts);
+			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(244, 123);
 			this.MinimizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(244, 123);
 			this.Name = "FrmGpsSettings";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "GPS Settings";
 			this.ResumeLayout(false);
 			this.PerformLayout();
