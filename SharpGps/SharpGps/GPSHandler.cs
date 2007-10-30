@@ -253,14 +253,22 @@ namespace SharpGis.SharpGps
 		/// <summary>
 		/// Turns on NMEA emulation
 		/// </summary>
-		/// <param name="FileName">File to read NMEA sentences from</param>
+		/// <param name="FileName">File to read NMEA sentences from. Set to null or empty to disable emulation</param>
 		public void EnableEmulate(string FileName)
 		{
-			_emulate = true;
-			if(System.IO.File.Exists(FileName))
-				_NMEAInputFile = FileName;
+			if (String.IsNullOrEmpty(FileName))
+			{
+				_emulate = false;
+				_NMEAInputFile = null;
+			}
 			else
-				throw(new System.Exception("Error. File not found"));
+			{
+				_emulate = true;
+				if (System.IO.File.Exists(FileName))
+					_NMEAInputFile = FileName;
+				else
+					throw (new System.Exception("Error. File not found"));
+			}
 		}
 
 		/// <summary>
@@ -276,7 +284,7 @@ namespace SharpGis.SharpGps
 			if(!_emulate)
 				this.clThreadStart = new ThreadStart(GpsPort.Start);
 			else
-				this.clThreadStart = new ThreadStart(new SharpGps.GPSHandler.NMEAEmulator().Emulator);
+				this.clThreadStart = new ThreadStart(new SharpGps.GPSHandler.NMEAEmulator(new SharpGps.SerialPort.NewGPSDataHandler(this.GPSDataEventHandler)).Emulator);
 			this.clThread = new Thread(this.clThreadStart);
 			
 			try 
@@ -574,23 +582,28 @@ namespace SharpGis.SharpGps
 		{
 			public event SharpGps.SerialPort.NewGPSDataHandler NewGPSData;
 			private System.IO.StreamReader file;
+			SharpGps.SerialPort.NewGPSDataHandler gpsdatahandler;
+			public NMEAEmulator(SharpGps.SerialPort.NewGPSDataHandler handler)
+			{
+				gpsdatahandler = handler;
+			}
 			public void Emulator()
 			{
+				NewGPSData += new SharpGps.SerialPort.NewGPSDataHandler(gpsdatahandler);
 				file = new System.IO.StreamReader(GPSHandler._NMEAInputFile);
 				while (file!=null)
 				{
 					if (file.EndOfStream)
 					{
 						//Start from beginning of file
-						file.Close();
-						file = new System.IO.StreamReader(GPSHandler._NMEAInputFile);
+						file.BaseStream.Seek(0, System.IO.SeekOrigin.Begin);
 					}
 					string line = file.ReadLine();
 					SharpGps.SerialPort.GPSEventArgs e = new SharpGps.SerialPort.GPSEventArgs();
 					e.TypeOfEvent = GPSHandler.String2Eventtype(line);
 					e.Sentence = line;
 					NewGPSData(this, e);
-					System.Threading.Thread.Sleep(50);
+					System.Threading.Thread.Sleep(150);
 				}
 			}
 			public void Dispose()
