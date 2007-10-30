@@ -104,8 +104,7 @@ namespace Demo_WinForms
 			this.label28 = new System.Windows.Forms.Label();
 			this.lbGSAMode = new System.Windows.Forms.Label();
 			this.tabGPGSV = new System.Windows.Forms.TabPage();
-			this.picGSVSignals = new System.Windows.Forms.PictureBox();
-			this.picGSVSkyview = new System.Windows.Forms.PictureBox();
+			this.skyview1 = new Demo_WinForms.SkyView();
 			this.label33 = new System.Windows.Forms.Label();
 			this.tabPGRME = new System.Windows.Forms.TabPage();
 			this.label31 = new System.Windows.Forms.Label();
@@ -135,14 +134,13 @@ namespace Demo_WinForms
 			this.menuItemGPS_Settings = new System.Windows.Forms.MenuItem();
 			this.menuItem2 = new System.Windows.Forms.MenuItem();
 			this.menuItem4 = new System.Windows.Forms.MenuItem();
+			this.gpsSignalLevelChart1 = new Demo_WinForms.GpsSignalLevelChart();
 			this.NMEAtabs.SuspendLayout();
 			this.tabGPRMC.SuspendLayout();
 			this.tabGPGGA.SuspendLayout();
 			this.tabGPGLL.SuspendLayout();
 			this.tabGPGSA.SuspendLayout();
 			this.tabGPGSV.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.picGSVSignals)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.picGSVSkyview)).BeginInit();
 			this.tabPGRME.SuspendLayout();
 			this.tabRaw.SuspendLayout();
 			this.tabNTRIP.SuspendLayout();
@@ -167,7 +165,7 @@ namespace Demo_WinForms
 			this.NMEAtabs.Location = new System.Drawing.Point(0, 0);
 			this.NMEAtabs.Name = "NMEAtabs";
 			this.NMEAtabs.SelectedIndex = 0;
-			this.NMEAtabs.Size = new System.Drawing.Size(387, 368);
+			this.NMEAtabs.Size = new System.Drawing.Size(387, 347);
 			this.NMEAtabs.TabIndex = 1;
 			this.NMEAtabs.SelectedIndexChanged += new System.EventHandler(this.NMEAtabs_SelectedIndexChanged);
 			// 
@@ -189,7 +187,7 @@ namespace Demo_WinForms
 			this.tabGPRMC.Controls.Add(this.lbRMCPosition);
 			this.tabGPRMC.Location = new System.Drawing.Point(4, 22);
 			this.tabGPRMC.Name = "tabGPRMC";
-			this.tabGPRMC.Size = new System.Drawing.Size(379, 342);
+			this.tabGPRMC.Size = new System.Drawing.Size(501, 372);
 			this.tabGPRMC.TabIndex = 0;
 			this.tabGPRMC.Text = "GPRMC";
 			// 
@@ -334,7 +332,7 @@ namespace Demo_WinForms
 			this.tabGPGGA.Controls.Add(this.lbGGAPosition);
 			this.tabGPGGA.Location = new System.Drawing.Point(4, 22);
 			this.tabGPGGA.Name = "tabGPGGA";
-			this.tabGPGGA.Size = new System.Drawing.Size(379, 342);
+			this.tabGPGGA.Size = new System.Drawing.Size(379, 321);
 			this.tabGPGGA.TabIndex = 1;
 			this.tabGPGGA.Text = "GPGGA";
 			// 
@@ -521,7 +519,7 @@ namespace Demo_WinForms
 			this.tabGPGLL.Controls.Add(this.lbGLLPosition);
 			this.tabGPGLL.Location = new System.Drawing.Point(4, 22);
 			this.tabGPGLL.Name = "tabGPGLL";
-			this.tabGPGLL.Size = new System.Drawing.Size(379, 342);
+			this.tabGPGLL.Size = new System.Drawing.Size(379, 321);
 			this.tabGPGLL.TabIndex = 2;
 			this.tabGPGLL.Text = "GPGLL";
 			// 
@@ -606,7 +604,7 @@ namespace Demo_WinForms
 			this.tabGPGSA.Controls.Add(this.lbGSAMode);
 			this.tabGPGSA.Location = new System.Drawing.Point(4, 22);
 			this.tabGPGSA.Name = "tabGPGSA";
-			this.tabGPGSA.Size = new System.Drawing.Size(379, 342);
+			this.tabGPGSA.Size = new System.Drawing.Size(379, 321);
 			this.tabGPGSA.TabIndex = 3;
 			this.tabGPGSA.Text = "GPGSA";
 			// 
@@ -729,34 +727,23 @@ namespace Demo_WinForms
 			// 
 			// tabGPGSV
 			// 
-			this.tabGPGSV.Controls.Add(this.picGSVSignals);
-			this.tabGPGSV.Controls.Add(this.picGSVSkyview);
+			this.tabGPGSV.Controls.Add(this.gpsSignalLevelChart1);
+			this.tabGPGSV.Controls.Add(this.skyview1);
 			this.tabGPGSV.Controls.Add(this.label33);
 			this.tabGPGSV.Location = new System.Drawing.Point(4, 22);
 			this.tabGPGSV.Name = "tabGPGSV";
-			this.tabGPGSV.Size = new System.Drawing.Size(379, 342);
+			this.tabGPGSV.Size = new System.Drawing.Size(379, 321);
 			this.tabGPGSV.TabIndex = 4;
 			this.tabGPGSV.Text = "GPGSV";
 			// 
-			// picGSVSignals
+			// skyview1
 			// 
-			this.picGSVSignals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
-			this.picGSVSignals.Location = new System.Drawing.Point(8, 193);
-			this.picGSVSignals.Name = "picGSVSignals";
-			this.picGSVSignals.Size = new System.Drawing.Size(363, 129);
-			this.picGSVSignals.TabIndex = 0;
-			this.picGSVSignals.TabStop = false;
-			// 
-			// picGSVSkyview
-			// 
-			this.picGSVSkyview.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.picGSVSkyview.Location = new System.Drawing.Point(103, 17);
-			this.picGSVSkyview.Name = "picGSVSkyview";
-			this.picGSVSkyview.Size = new System.Drawing.Size(170, 170);
-			this.picGSVSkyview.TabIndex = 1;
-			this.picGSVSkyview.TabStop = false;
+			this.skyview1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.skyview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.skyview1.Location = new System.Drawing.Point(109, 27);
+			this.skyview1.Name = "skyview1";
+			this.skyview1.Size = new System.Drawing.Size(170, 170);
+			this.skyview1.TabIndex = 3;
 			// 
 			// label33
 			// 
@@ -779,7 +766,7 @@ namespace Demo_WinForms
 			this.tabPGRME.Controls.Add(this.lbRMEHorError);
 			this.tabPGRME.Location = new System.Drawing.Point(4, 22);
 			this.tabPGRME.Name = "tabPGRME";
-			this.tabPGRME.Size = new System.Drawing.Size(379, 342);
+			this.tabPGRME.Size = new System.Drawing.Size(379, 321);
 			this.tabPGRME.TabIndex = 5;
 			this.tabPGRME.Text = "PGRME";
 			// 
@@ -851,7 +838,7 @@ namespace Demo_WinForms
 			this.tabRaw.Controls.Add(this.tbRawLog);
 			this.tabRaw.Location = new System.Drawing.Point(4, 22);
 			this.tabRaw.Name = "tabRaw";
-			this.tabRaw.Size = new System.Drawing.Size(379, 342);
+			this.tabRaw.Size = new System.Drawing.Size(379, 321);
 			this.tabRaw.TabIndex = 6;
 			this.tabRaw.Text = "Raw";
 			// 
@@ -863,7 +850,7 @@ namespace Demo_WinForms
 			this.tbRawLog.Name = "tbRawLog";
 			this.tbRawLog.ReadOnly = true;
 			this.tbRawLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.tbRawLog.Size = new System.Drawing.Size(379, 342);
+			this.tbRawLog.Size = new System.Drawing.Size(379, 321);
 			this.tbRawLog.TabIndex = 0;
 			this.tbRawLog.WordWrap = false;
 			// 
@@ -878,7 +865,7 @@ namespace Demo_WinForms
 			this.tabNTRIP.Controls.Add(this.btnNTRIPGetSourceTable);
 			this.tabNTRIP.Location = new System.Drawing.Point(4, 22);
 			this.tabNTRIP.Name = "tabNTRIP";
-			this.tabNTRIP.Size = new System.Drawing.Size(379, 342);
+			this.tabNTRIP.Size = new System.Drawing.Size(379, 321);
 			this.tabNTRIP.TabIndex = 7;
 			this.tabNTRIP.Text = "NTRIP";
 			// 
@@ -961,9 +948,9 @@ namespace Demo_WinForms
 			// 
 			// statusBar1
 			// 
-			this.statusBar1.Location = new System.Drawing.Point(0, 367);
+			this.statusBar1.Location = new System.Drawing.Point(0, 325);
 			this.statusBar1.Name = "statusBar1";
-			this.statusBar1.Size = new System.Drawing.Size(387, 22);
+			this.statusBar1.Size = new System.Drawing.Size(393, 22);
 			this.statusBar1.TabIndex = 0;
 			this.statusBar1.Text = "GPS Offline";
 			// 
@@ -1019,11 +1006,22 @@ namespace Demo_WinForms
 			this.menuItem4.Index = 0;
 			this.menuItem4.Text = "Settings...";
 			// 
+			// gpsSignalLevelChart1
+			// 
+			this.gpsSignalLevelChart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.gpsSignalLevelChart1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.gpsSignalLevelChart1.Location = new System.Drawing.Point(10, 203);
+			this.gpsSignalLevelChart1.Name = "gpsSignalLevelChart1";
+			this.gpsSignalLevelChart1.Size = new System.Drawing.Size(361, 94);
+			this.gpsSignalLevelChart1.TabIndex = 4;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(387, 389);
+			this.ClientSize = new System.Drawing.Size(387, 368);
 			this.Controls.Add(this.statusBar1);
 			this.Controls.Add(this.NMEAtabs);
 			this.Menu = this.mainMenu;
@@ -1036,8 +1034,6 @@ namespace Demo_WinForms
 			this.tabGPGLL.ResumeLayout(false);
 			this.tabGPGSA.ResumeLayout(false);
 			this.tabGPGSV.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.picGSVSignals)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.picGSVSkyview)).EndInit();
 			this.tabPGRME.ResumeLayout(false);
 			this.tabRaw.ResumeLayout(false);
 			this.tabRaw.PerformLayout();
@@ -1125,8 +1121,6 @@ namespace Demo_WinForms
 		private System.Windows.Forms.Label label30;
 		private System.Windows.Forms.Label label32;
 		private System.Windows.Forms.Label label33;
-		private System.Windows.Forms.PictureBox picGSVSignals;
-		private System.Windows.Forms.PictureBox picGSVSkyview;
 		private System.Windows.Forms.MenuItem menuItemGPS_Settings;
 		private System.Windows.Forms.MenuItem menuItem2;
 		private System.Windows.Forms.MenuItem menuItem4;
@@ -1141,6 +1135,8 @@ namespace Demo_WinForms
 		private System.Windows.Forms.DataGrid dgNTRIPNetworks;
 		private System.Windows.Forms.Label label35;
 		private System.Windows.Forms.Label lbRMCPositionUTM;
+		private SkyView skyview1;
+		private GpsSignalLevelChart gpsSignalLevelChart1;
 		//private System.Windows.Forms.MainMenu mainMenu1;
 		//private System.Windows.Forms.MenuItem menuItem4;
 		//private System.Windows.Forms.MenuItem menuItem_File_Exit;

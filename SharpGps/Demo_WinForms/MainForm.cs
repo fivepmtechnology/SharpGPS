@@ -53,6 +53,8 @@ namespace Demo_WinForms
 			{
 				try
 				{
+					//GPS.EnableEmulate(@"..\Bristol_Nottingham.txt"); //Uncomment this and change filepath to valid NMEA log file for emulating GPS data
+					
 					GPS.Start(frmGpsSettings.SerialPort, frmGpsSettings.BaudRate); //Open serial port
 					menuItemGPS_Start.Text = "Stop";
 				}
@@ -179,86 +181,8 @@ namespace Demo_WinForms
 		}
 		private void DrawGSV()
 		{
-			System.Drawing.Color[] Colors = { Color.Blue , Color.Red , Color.Green, Color.Yellow, Color.Cyan, Color.Orange,
-											  Color.Gold , Color.Violet, Color.YellowGreen, Color.Brown, Color.GreenYellow,
-											  Color.Blue , Color.Red , Color.Green, Color.Yellow, Color.Aqua, Color.Orange};
-			//Generate signal level readout
-			int SatCount = GPS.GPGSV.SatsInView;
-			Bitmap imgSignals = new Bitmap(picGSVSignals.Width, picGSVSignals.Height);
-			Graphics g = Graphics.FromImage(imgSignals);
-			g.Clear(Color.White);
-			Pen penBlack = new Pen(Color.Black, 1);
-			Pen penBlackDashed = new Pen(Color.Black, 1);
-			penBlackDashed.DashPattern = new float[] { 2f , 2f };
-			Pen penGray = new Pen(Color.LightGray, 1);
-			int iMargin = 4; //Distance to edge of image
-			int iPadding = 4; //Distance between signal bars
-			g.DrawRectangle(penBlack, 0, 0, imgSignals.Width - 1, imgSignals.Height - 1);
-			
-			StringFormat sFormat =	new StringFormat();
-			int barWidth = 1;
-			if(SatCount>0)
-				barWidth = (imgSignals.Width - 2 * iMargin-iPadding*(SatCount-1)) / SatCount;
-
-			//Draw horisontal lines
-			for (int i = imgSignals.Height - 15; i > iMargin; i -= (imgSignals.Height - 15 - iMargin) / 5)
-				g.DrawLine(penGray, 1, i, imgSignals.Width - 2, i);
-			sFormat.Alignment = StringAlignment.Center;
-			//Draw satellites
-			//GPS.GPGSV.Satellites.Sort(); //new Comparison<SharpGis.SharpGps.NMEA.GPGSV.Satellite>(sat1, sat2) { int.Parse(sat1)
-			for (int i = 0; i < GPS.GPGSV.Satellites.Count; i++)
-			{
-				SharpGis.SharpGps.NMEA.GPGSV.Satellite sat = GPS.GPGSV.Satellites[i];
-				int startx = i * (barWidth + iPadding)+iMargin;
-				int starty = imgSignals.Height - 15;
-				int height = (imgSignals.Height - 15 - iMargin)/50*sat.SNR;
-				if (GPS.GPGSA.PRNInSolution.Contains(sat.PRN))
-				{
-					g.FillRectangle(new System.Drawing.SolidBrush(Colors[i]), startx, starty - height + 1, barWidth, height);
-					g.DrawRectangle(penBlack, startx, starty - height, barWidth, height);}
-				else
-				{
-					g.FillRectangle(new System.Drawing.SolidBrush(Color.FromArgb(50, Colors[i])), startx, starty - height + 1, barWidth, height);
-					g.DrawRectangle(penBlackDashed, startx, starty - height, barWidth, height);
-				}
-								
-				sFormat.LineAlignment = StringAlignment.Near;
-				g.DrawString(sat.PRN,new Font("Verdana",9,FontStyle.Regular),new System.Drawing.SolidBrush(Color.Black),startx+barWidth/2,imgSignals.Height-15,sFormat);
-				sFormat.LineAlignment = StringAlignment.Far;
-				g.DrawString(sat.SNR.ToString(), new Font("Verdana", 9, FontStyle.Regular), new System.Drawing.SolidBrush(Color.Black), startx + barWidth / 2, starty-height, sFormat);
-			}
-			picGSVSignals.Image = imgSignals;
-
-			//Generate sky view
-			Bitmap imgSkyview = new Bitmap(picGSVSkyview.Width, picGSVSkyview.Height);
-			g = Graphics.FromImage(imgSkyview);
-			g.Clear(Color.Transparent);
-			g.FillEllipse(Brushes.White, 0, 0, imgSkyview.Width - 1, imgSkyview.Height - 1);
-			g.DrawEllipse(penGray, 0, 0, imgSkyview.Width - 1, imgSkyview.Height - 1);
-			g.DrawEllipse(penGray, imgSkyview.Width / 4, imgSkyview.Height / 4, imgSkyview.Width / 2, imgSkyview.Height / 2);
-			g.DrawLine(penGray, imgSkyview.Width / 2, 0, imgSkyview.Width / 2, imgSkyview.Height);
-			g.DrawLine(penGray, 0, imgSkyview.Height / 2, imgSkyview.Width, imgSkyview.Height / 2);
-			sFormat.LineAlignment = StringAlignment.Near;
-			sFormat.Alignment = StringAlignment.Near;
-			float radius = 6f;
-			for (int i = 0; i < GPS.GPGSV.Satellites.Count; i++)
-			{
-				SharpGis.SharpGps.NMEA.GPGSV.Satellite sat = GPS.GPGSV.Satellites[i];
-				double ang = 90.0-sat.Azimuth;
-				ang = ang/180.0*Math.PI;
-				int x = imgSkyview.Width/2 + (int)Math.Round((Math.Cos(ang) * ((90.0 - sat.Elevation)/90.0)*(imgSkyview.Width/2.0-iMargin)));
-				int y = imgSkyview.Height/2 - (int)Math.Round((Math.Sin(ang) * ((90.0 - sat.Elevation) / 90.0) * (imgSkyview.Height / 2.0-iMargin)));
-				g.FillEllipse(new System.Drawing.SolidBrush(Colors[i]), x - radius * 0.5f, y - radius * 0.5f, radius, radius);
-
-				if (GPS.GPGSA.PRNInSolution.Contains(sat.PRN))
-				{
-					g.DrawEllipse(penBlack, x - radius * 0.5f, y - radius * 0.5f, radius, radius);
-					g.DrawString(sat.PRN, new Font("Verdana", 9, FontStyle.Bold), new System.Drawing.SolidBrush(Color.Black), x, y, sFormat);
-				}
-				else
-					g.DrawString(sat.PRN, new Font("Verdana", 8, FontStyle.Italic), new System.Drawing.SolidBrush(Color.Gray), x, y, sFormat);
-			}
-			picGSVSkyview.Image = imgSkyview;
+			gpsSignalLevelChart1.DrawSignals(GPS.GPGSV, GPS.GPGSA);
+			skyview1.DrawGSV(GPS.GPGSV, GPS.GPGSA);
 		}
 
 		private void menuItem_File_Exit_Click(object sender, EventArgs e)
