@@ -85,17 +85,19 @@ namespace SharpGis.SharpGps.NTRIP
 			get { return _broadcaster; }
 			set { _broadcaster = value; }
 		}
-	
-		public NTRIPClient(IPEndPoint Server)
+
+		private GPSHandler gps;
+
+		public NTRIPClient(IPEndPoint Server, GPSHandler gpsHandler)
 		{
 			//Initialization...
+			gps = gpsHandler;
 			BroadCaster = Server;
 			//InitializeSocket();
 		}
 
-		public NTRIPClient(IPEndPoint Server, string strUserName, string strPassword)
+		public NTRIPClient(IPEndPoint Server, string strUserName, string strPassword, GPSHandler gpsHandler) : this(Server, gpsHandler)
 		{
-			BroadCaster = Server;
 			_username = strUserName;
 			_password = strPassword;
 			//InitializeSocket();
@@ -207,9 +209,9 @@ namespace SharpGis.SharpGps.NTRIP
 			{
 				try
 				{
-					if (GPSHandler.GpsPort.IsPortOpen)
+					if (gps.GpsPort.IsPortOpen)
 						//Send RTCM data to GPS. We assume the data is valid RTCM
-						GPSHandler.GpsPort.Write(rtcmDataBuffer);
+						gps.GpsPort.Write(rtcmDataBuffer);
 				}
 				catch (System.Exception ex)
 				{

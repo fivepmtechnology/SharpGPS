@@ -206,7 +206,7 @@ namespace Demo_WinForms
 				
 		private void btnNTRIPGetSourceTable_Click(object sender, EventArgs e)
 		{
-			SharpGis.SharpGps.NTRIP.NTRIPClient ntrip = new SharpGis.SharpGps.NTRIP.NTRIPClient(new System.Net.IPEndPoint(System.Net.IPAddress.Parse(tbNTRIPServerIP.Text.Trim()), int.Parse(tbNTRIPPort.Text)));
+			SharpGis.SharpGps.NTRIP.NTRIPClient ntrip = new SharpGis.SharpGps.NTRIP.NTRIPClient(new System.Net.IPEndPoint(System.Net.IPAddress.Parse(tbNTRIPServerIP.Text.Trim()), int.Parse(tbNTRIPPort.Text)), GPS);
 			// http://igs.ifag.de/root_ftp/misc/ntrip/streamlist_euref-ip.htm
 				
 			SharpGis.SharpGps.NTRIP.SourceTable table = ntrip.GetSourceTable();

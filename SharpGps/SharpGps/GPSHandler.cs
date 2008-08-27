@@ -36,7 +36,7 @@ namespace SharpGis.SharpGps
 	/// </summary>
 	public class GPSHandler : IDisposable
 	{
-		internal static SerialPort GpsPort = new SerialPort();
+		internal SerialPort GpsPort;
 		private ThreadStart clThreadStart;
 		private Thread clThread;
 		//private static bool portopen = false;
@@ -154,6 +154,7 @@ namespace SharpGis.SharpGps
 		/// </example>
 		public GPSHandler(System.Windows.Forms.Control Parent)
 		{
+			GpsPort = new SerialPort();
 			_Parent = Parent;
 			disposed = false;
 			this._NewGPSFix += new NewGPSFixHandler(this.GPSEventHandler);
