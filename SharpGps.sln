@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{431961E4-4111-4A41-AE3B-3792ECC957E0}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\SharpMap.CoordinateSystems.dll = Dependencies\SharpMap.CoordinateSystems.dll
+		Dependencies\SharpMap.CoordinateSystems.XML = Dependencies\SharpMap.CoordinateSystems.XML
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "src\Demo_WinForms\Demo.csproj", "{58046503-369B-49B3-B9B3-D50144F7A368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpGPS", "src\SharpGps\SharpGPS.csproj", "{B5930C8E-C0C7-44B1-A98B-AA19170C3BA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58046503-369B-49B3-B9B3-D50144F7A368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58046503-369B-49B3-B9B3-D50144F7A368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58046503-369B-49B3-B9B3-D50144F7A368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58046503-369B-49B3-B9B3-D50144F7A368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5930C8E-C0C7-44B1-A98B-AA19170C3BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5930C8E-C0C7-44B1-A98B-AA19170C3BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5930C8E-C0C7-44B1-A98B-AA19170C3BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5930C8E-C0C7-44B1-A98B-AA19170C3BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

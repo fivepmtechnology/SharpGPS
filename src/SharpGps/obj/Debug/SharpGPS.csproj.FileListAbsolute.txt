@@ -1,0 +1,5 @@
+C:\Users\bytenik\Dropbox\Projects\SharpGPS\src\SharpGps\obj\Debug\SharpGPS.csprojResolveAssemblyReference.cache
+C:\Users\bytenik\Dropbox\Projects\SharpGPS\src\SharpGps\bin\Debug\SharpGPS.dll
+C:\Users\bytenik\Dropbox\Projects\SharpGPS\src\SharpGps\bin\Debug\SharpGPS.pdb
+C:\Users\bytenik\Dropbox\Projects\SharpGPS\src\SharpGps\obj\Debug\SharpGPS.dll
+C:\Users\bytenik\Dropbox\Projects\SharpGPS\src\SharpGps\obj\Debug\SharpGPS.pdb
