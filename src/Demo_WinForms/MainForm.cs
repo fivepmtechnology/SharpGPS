@@ -17,6 +17,8 @@
 
 using System;
 using System.Windows.Forms;
+using ProjNet.CoordinateSystems;
+using ProjNet.CoordinateSystems.Transformations;
 
 namespace SharpGPS.Demo
 {
@@ -154,15 +156,14 @@ namespace SharpGPS.Demo
 					break;
 			}
 		}
-		private double[] TransformToUTM(SharpGPS.Coordinate p)
+		private double[] TransformToUTM(Coordinate p)
 		{
 			//For fun, let's use the SharpMap transformation library and display the position in UTM
-			int zone = (int)Math.Floor((p.Longitude+183)/6.0);			
-			SharpMap.CoordinateSystems.ProjectedCoordinateSystem proj = SharpMap.CoordinateSystems.ProjectedCoordinateSystem.WGS84_UTM(zone, (p.Latitude>=0));
-			SharpMap.CoordinateSystems.Transformations.ICoordinateTransformation trans =
-				new SharpMap.CoordinateSystems.Transformations.CoordinateTransformationFactory().CreateFromCoordinateSystems(proj.GeographicCoordinateSystem, proj);
-			double[] result = trans.MathTransform.Transform(new double[] { p.Longitude, p.Latitude });
-			return new double[] { result[0], result[1], zone };
+			int zone = (int)Math.Floor((p.X+183)/6.0);			
+			var proj = ProjectedCoordinateSystem.WGS84_UTM(zone, (p.Y>=0));
+			var trans = new CoordinateTransformationFactory().CreateFromCoordinateSystems(proj.GeographicCoordinateSystem, proj);
+			var result = trans.MathTransform.Transform(new[] { p.X, p.Y });
+			return new[] { result[0], result[1], zone };
 		}
 		private string DOPtoWord(double dop)
 		{
